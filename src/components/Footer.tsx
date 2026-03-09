@@ -1,80 +1,89 @@
 import { motion } from 'framer-motion';
-import { Heart, Linkedin, Github, Mail } from 'lucide-react';
+import { Linkedin, Github, Mail } from 'lucide-react';
+
+const socialLinks = [
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/software-engineerali', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/Alitariq-code', label: 'GitHub' },
+  { icon: Mail, href: 'mailto:alitariqcode@gmail.com', label: 'Email' },
+];
+
+const quickLinks = ['About', 'Skills', 'Experience', 'Projects', 'Contact'];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const socialLinks = [
-    { 
-      icon: Linkedin, 
-      href: 'https://www.linkedin.com/in/software-engineerali', 
-      label: 'LinkedIn',
-      color: 'hover:text-teal',
-    },
-    { 
-      icon: Github, 
-      href: 'https://github.com/Alitariq-code', 
-      label: 'GitHub',
-      color: 'hover:text-cyan',
-    },
-    { 
-      icon: Mail, 
-      href: 'mailto:alitariqcode@gmail.com', 
-      label: 'Email',
-      color: 'hover:text-teal',
-    },
-  ];
-
   return (
-    <footer className="relative border-t border-white/10 bg-slate-800/40 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-          {/* Brand Section */}
+    <footer
+      className="relative border-t py-12"
+      style={{
+        backgroundColor: 'var(--bg-void)',
+        borderColor: 'var(--border-subtle)',
+      }}
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
+          {/* Brand */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
           >
-            <h3 className="text-xl font-bold text-white mb-4">Ali Tariq</h3>
-            <p className="text-slate-400 text-sm mb-4">
-              Full Stack Developer specializing in IoT platforms & enterprise solutions.
+            <h3
+              className="mb-2"
+              style={{ fontFamily: 'Syne, sans-serif', color: 'var(--text-primary)', fontSize: '1.1rem' }}
+            >
+              Ali Tariq
+            </h3>
+            <p className="text-sm mb-5 leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+              Full Stack Developer specializing in IoT platforms and enterprise solutions.
             </p>
-            <div className="flex gap-4">
-              {socialLinks.map((link) => {
-                const Icon = link.icon;
-                return (
-                  <motion.a
-                    key={link.label}
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`text-slate-400 ${link.color} transition-colors`}
-                    whileHover={{ scale: 1.2 }}
-                    whileTap={{ scale: 0.9 }}
-                    aria-label={link.label}
-                  >
-                    <Icon size={20} />
-                  </motion.a>
-                );
-              })}
+            <div className="flex gap-3">
+              {socialLinks.map(({ icon: Icon, href, label }) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={href.startsWith('mailto:') ? undefined : '_blank'}
+                  rel={href.startsWith('mailto:') ? undefined : 'noopener noreferrer'}
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-all duration-200 focus:outline-none focus-visible:ring-2"
+                  style={{
+                    background: 'var(--bg-elevated)',
+                    border: '1px solid var(--border-subtle)',
+                    color: 'var(--text-muted)',
+                    '--tw-ring-color': 'var(--accent-primary)',
+                  } as React.CSSProperties}
+                  whileHover={{ y: -2, color: 'var(--accent-glow)', borderColor: 'var(--border-default)' }}
+                  whileTap={{ scale: 0.93 }}
+                  aria-label={label}
+                >
+                  <Icon size={16} aria-hidden="true" />
+                </motion.a>
+              ))}
             </div>
           </motion.div>
 
           {/* Quick Links */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Quick Links</h4>
+            <h4
+              className="text-sm font-semibold mb-4 uppercase tracking-wider"
+              style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-muted)' }}
+            >
+              Navigation
+            </h4>
             <ul className="space-y-2">
-              {['About', 'Skills', 'Experience', 'Projects', 'Contact'].map((item) => (
+              {quickLinks.map((item) => (
                 <li key={item}>
                   <a
                     href={`#${item.toLowerCase()}`}
-                    className="text-slate-400 hover:text-teal transition-colors text-sm"
+                    className="nav-link text-sm transition-colors duration-200"
+                    style={{ color: 'var(--text-muted)', display: 'inline-block' }}
+                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--text-primary)')}
+                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                   >
                     {item}
                   </a>
@@ -83,36 +92,53 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* Contact Info */}
+          {/* Contact */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.5, delay: 0.16 }}
           >
-            <h4 className="text-lg font-semibold text-white mb-4">Get In Touch</h4>
-            <ul className="space-y-2 text-slate-400 text-sm">
+            <h4
+              className="text-sm font-semibold mb-4 uppercase tracking-wider"
+              style={{ fontFamily: 'JetBrains Mono, monospace', color: 'var(--text-muted)' }}
+            >
+              Get In Touch
+            </h4>
+            <ul className="space-y-2 text-sm">
               <li>
-                <a href="mailto:alitariqcode@gmail.com" className="hover:text-teal transition-colors">
+                <a
+                  href="mailto:alitariqcode@gmail.com"
+                  className="transition-colors duration-200"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-primary)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
+                >
                   alitariqcode@gmail.com
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://www.linkedin.com/in/software-engineerali" 
-                  target="_blank" 
+                <a
+                  href="https://www.linkedin.com/in/software-engineerali"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-teal transition-colors"
+                  className="transition-colors duration-200"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-primary)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                 >
                   LinkedIn Profile
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://github.com/Alitariq-code" 
-                  target="_blank" 
+                <a
+                  href="https://github.com/Alitariq-code"
+                  target="_blank"
                   rel="noopener noreferrer"
-                  className="hover:text-teal transition-colors"
+                  className="transition-colors duration-200"
+                  style={{ color: 'var(--text-muted)' }}
+                  onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-primary)')}
+                  onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                 >
                   GitHub Profile
                 </a>
@@ -121,37 +147,17 @@ export default function Footer() {
           </motion.div>
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <motion.p
-            className="text-slate-400 text-sm"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-          >
-            © {currentYear} Ali Tariq. All rights reserved.
-          </motion.p>
-          <motion.p
-            className="text-slate-400 text-sm flex items-center"
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.1 }}
-          >
-            Made with{' '}
-            <motion.span
-              className="mx-1 text-teal"
-              animate={{ scale: [1, 1.2, 1] }}
-              transition={{ duration: 1, repeat: Infinity, repeatDelay: 1 }}
-            >
-              <Heart size={16} fill="currentColor" />
-            </motion.span>{' '}
-            using React & Vite
-          </motion.p>
+        {/* Bottom bar */}
+        <div
+          className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs"
+          style={{ borderTop: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}
+        >
+          <span>© {currentYear} Ali Tariq. All rights reserved.</span>
+          <span style={{ fontFamily: 'JetBrains Mono, monospace' }}>
+            Built with React & Vite
+          </span>
         </div>
       </div>
-
     </footer>
   );
 }

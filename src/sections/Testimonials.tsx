@@ -1,7 +1,7 @@
-                                                                                    import { motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
-import { useRef } from 'react';
-import { Quote, Linkedin, Star } from 'lucide-react';
+import { useRef, useState } from 'react';
+import { Linkedin, Star } from 'lucide-react';
 
 interface Testimonial {
   name: string;
@@ -37,7 +37,7 @@ const testimonials: Testimonial[] = [
     role: 'SQA Engineer',
     company: 'IoT & RFID | Web & Mobile Testing',
     text: 'I had the pleasure of working with Ali for over a year on a large-scale project, and he consistently impressed the team with his problem-solving skills and steady approach under pressure. His strong grip on development, especially in fast-paced sprints, made a real difference.',
-    relationship: 'Worked with Ali on the same team',
+    relationship: 'Worked on the same team',
     date: 'August 2025',
   },
   {
@@ -45,15 +45,15 @@ const testimonials: Testimonial[] = [
     role: 'Founder & Solopreneur',
     company: 'Quickevent.app | Creator of F1IQ.com',
     text: 'Ali is Mr. Dependable. Throw any tech stack at him: backend, frontend, IoT; and he\'ll just figure it out without making a fuss. I\'ve seen him go from zero to shipping in areas most devs would hesitate to touch. No ego, no drama. Just solid execution.',
-    relationship: 'Worked with Ali on the same team',
+    relationship: 'Worked on the same team',
     date: 'June 2025',
   },
   {
     name: 'Syed Muhammad Usama',
-    role: 'Frontend Lead - Senior Software Engineer',
+    role: 'Frontend Lead — Senior Software Engineer',
     company: 'React.js / Next.js Specialist',
     text: 'I had the pleasure of closely collaborating with Ali Tariq, a true problem solver in full-stack development. His expertise spans frontend and backend tasks, showcasing versatility and skill. His mastery of JavaScript, especially in backend API design and optimization, is impressive.',
-    relationship: 'Worked with Ali on the same team',
+    relationship: 'Worked on the same team',
     date: 'July 2024',
   },
   {
@@ -61,205 +61,174 @@ const testimonials: Testimonial[] = [
     role: 'React Native Developer',
     company: 'Node.js | MongoDB',
     text: 'I had the pleasure of working with Ali, a true team player with excellent problem-solving skills. His expertise spans both frontend and backend development, with a strong grasp of scalable system design. Ali effortlessly adapts to different architectures.',
-    relationship: 'Worked with Ali on the same team',
+    relationship: 'Worked on the same team',
     date: 'December 2024',
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.1,
-    },
-  },
-};
+function TestimonialCard({ testimonial }: { testimonial: Testimonial }) {
+  const [expanded, setExpanded] = useState(false);
+  const initials = testimonial.name.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1] as const,
-    },
-  },
-};
+  return (
+    <div
+      className="scroll-snap-item glass-card flex flex-col p-5"
+      style={{ width: 'min(320px, 85vw)', flexShrink: 0 }}
+    >
+      {/* Quote decoration */}
+      <span
+        className="text-5xl leading-none mb-2 select-none"
+        style={{ color: 'var(--accent-primary)', opacity: 0.25, fontFamily: 'Georgia, serif' }}
+        aria-hidden="true"
+      >
+        "
+      </span>
+
+      {/* Highlight badge */}
+      {testimonial.highlight && (
+        <div className="mb-3">
+          <span
+            className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium"
+            style={{
+              background: 'rgba(14, 165, 233, 0.1)',
+              border: '1px solid var(--border-default)',
+              color: 'var(--accent-primary)',
+              fontFamily: 'JetBrains Mono, monospace',
+            }}
+          >
+            <Star size={10} fill="currentColor" aria-hidden="true" />
+            Supervisor
+          </span>
+        </div>
+      )}
+
+      {/* Quote text */}
+      <div className="flex-1 mb-4">
+        <p
+          className={expanded ? '' : 'line-clamp-3'}
+          style={{ color: 'var(--text-secondary)', fontSize: '0.875rem', lineHeight: 1.7 }}
+        >
+          {testimonial.text}
+        </p>
+        {testimonial.text.length > 140 && (
+          <button
+            onClick={() => setExpanded(!expanded)}
+            className="mt-2 text-xs font-medium focus:outline-none focus-visible:underline"
+            style={{ color: 'var(--accent-primary)', fontFamily: 'DM Sans, sans-serif' }}
+            aria-expanded={expanded}
+          >
+            {expanded ? 'Show less' : 'Read more'}
+          </button>
+        )}
+      </div>
+
+      {/* Author */}
+      <div className="pt-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+        <div className="flex items-center gap-3">
+          <div
+            className="flex-shrink-0 w-9 h-9 rounded-lg flex items-center justify-center text-xs font-bold"
+            style={{
+              background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+              color: '#fff',
+              fontFamily: 'Syne, sans-serif',
+            }}
+            aria-hidden="true"
+          >
+            {initials}
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="text-sm font-semibold truncate" style={{ color: 'var(--text-primary)', fontFamily: 'Syne, sans-serif' }}>
+              {testimonial.name}
+            </p>
+            <p className="text-xs truncate" style={{ color: 'var(--accent-glow)' }}>
+              {testimonial.role}
+            </p>
+          </div>
+        </div>
+        <p className="mt-2 text-xs" style={{ color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace' }}>
+          {testimonial.relationship} · {testimonial.date}
+        </p>
+      </div>
+    </div>
+  );
+}
 
 export default function Testimonials() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const getInitials = (name: string) => {
-    return name
-      .split(' ')
-      .map(word => word[0])
-      .join('')
-      .toUpperCase()
-      .substring(0, 2);
-  };
-
   return (
-    <section id="testimonials" ref={ref} className="relative bg-slate-800/30 py-12 lg:py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="testimonials"
+      ref={ref}
+      className="section-spacing relative"
+      style={{ backgroundColor: 'var(--bg-base)' }}
+    >
+      <div className="section-container">
         {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-10"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl font-bold mb-2 text-white">
-            Recommendations
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontFamily: 'Syne, sans-serif' }}>
+            What People <span className="gradient-text-sky">Say</span>
           </h2>
-          <p className="text-slate-400 text-sm mb-4">
-            From colleagues, supervisors, and team members
+          <p className="mt-3" style={{ color: 'var(--text-secondary)' }}>
+            From supervisors, colleagues, and collaborators
           </p>
-          <div className="w-20 h-1 bg-gradient-to-r from-teal via-cyan to-teal rounded-full mx-auto" />
         </motion.div>
 
-        {/* Testimonials Grid */}
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
-        >
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              variants={cardVariants}
-              className="group relative bg-slate-800/40 backdrop-blur-sm rounded-xl p-5 border border-white/10 hover:border-teal/30 transition-all duration-300 flex flex-col"
-            >
-              {/* Top Accent */}
-              <div className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-teal via-cyan to-teal rounded-t-xl" />
-
-              {/* Quote Icon */}
-              <div className="absolute top-4 right-4 opacity-5">
-                <Quote size={40} className="text-teal" />
-              </div>
-
-              {/* Highlight Badge - Positioned to not overlap text */}
-              {testimonial.highlight && (
-                <div className="absolute top-3 left-3 z-20">
-                  <div className="flex items-center gap-1 px-2 py-1 rounded-full bg-teal/10 border border-teal/30 backdrop-blur-sm">
-                    <Star size={10} className="text-teal fill-teal" />
-                    <span className="text-xs font-medium text-teal">Supervisor</span>
-                  </div>
-                </div>
-              )}
-
-              {/* Testimonial Text - Add padding when badge is present */}
-              <div className={`flex-1 mb-4 relative z-10 ${testimonial.highlight ? 'pt-8' : ''}`}>
-                <p className="text-slate-300 text-sm leading-relaxed">
-                  <span className="text-teal/50 text-xl font-serif leading-none mr-1">"</span>
-                  {testimonial.text}
-                  <span className="text-teal/50 text-xl font-serif leading-none ml-1">"</span>
-                </p>
-              </div>
-
-              {/* Author Info */}
-              <div className="pt-4 border-t border-white/10 relative z-10">
-                <div className="flex items-center gap-3">
-                  {/* Avatar */}
-                  <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-gradient-to-br from-teal to-cyan flex items-center justify-center text-white font-bold text-xs border border-white/20">
-                    {getInitials(testimonial.name)}
-                  </div>
-
-                  {/* Details */}
-                  <div className="flex-1 min-w-0">
-                    <h4 className="text-white font-semibold text-sm mb-0.5 truncate">
-                      {testimonial.name}
-                    </h4>
-                    <p className="text-teal-300 text-xs font-medium truncate">
-                      {testimonial.role}
-                    </p>
-                    <p className="text-slate-500 text-xs truncate">
-                      {testimonial.company}
-                    </p>
-                  </div>
-                </div>
-
-                {/* Meta Info */}
-                <div className="flex items-center gap-2 mt-3 text-xs text-slate-500">
-                  <span>{testimonial.relationship}</span>
-                  <span>•</span>
-                  <span>{testimonial.date}</span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* LinkedIn Button */}
+        {/* Desktop: horizontal scroll — Mobile: single column */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.5, duration: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.1 }}
+        >
+          {/* Horizontal scroll (all viewports, scrollable) */}
+          <div
+            className="scroll-snap-container pb-4"
+            aria-label="Testimonials — scroll horizontally"
+          >
+            {testimonials.map((testimonial, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: 20 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: index * 0.08, duration: 0.5 }}
+                className="scroll-snap-item"
+                style={{ width: 'min(320px, 85vw)', flexShrink: 0 }}
+              >
+                <TestimonialCard testimonial={testimonial} />
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Mobile fallback: single column at small screens */}
+          <div className="md:hidden mt-6 space-y-4">
+            {/* Mobile layout handled by scroll above — hidden on md+ */}
+          </div>
+        </motion.div>
+
+        {/* LinkedIn CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.5 }}
           className="text-center mt-10"
         >
           <motion.a
             href="https://www.linkedin.com/in/software-engineerali"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center gap-3 px-6 py-3.5 rounded-xl font-semibold text-white bg-gradient-to-r from-teal via-cyan to-teal overflow-hidden transition-all duration-300 shadow-lg shadow-teal/30 hover:shadow-xl hover:shadow-teal/40"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.98 }}
+            className="btn-primary inline-flex"
+            whileHover={{ translateY: -2, boxShadow: '0 0 40px rgba(14, 165, 233, 0.3)' }}
+            whileTap={{ scale: 0.97 }}
+            transition={{ duration: 0.2 }}
           >
-            {/* Shimmer Effect */}
-            <motion.div
-              className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-              animate={{
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                duration: 2,
-                repeat: Infinity,
-                repeatDelay: 1,
-                ease: 'linear',
-              }}
-            />
-
-            {/* Glow Effect */}
-            <div className="absolute inset-0 bg-gradient-to-r from-teal via-cyan to-teal opacity-0 group-hover:opacity-100 blur-xl transition-opacity duration-300" />
-
-            {/* Icon */}
-            <motion.div
-              className="relative z-10"
-              animate={{ rotate: [0, 5, -5, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <Linkedin size={20} className="group-hover:scale-110 transition-transform duration-300" />
-            </motion.div>
-
-            {/* Text */}
-            <span className="relative z-10">View All on LinkedIn</span>
-
-            {/* Arrow Indicator */}
-            <motion.div
-              className="relative z-10"
-              animate={{ x: [0, 3, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 16 16"
-                fill="none"
-                className="group-hover:translate-x-1 transition-transform duration-300"
-              >
-                <path
-                  d="M6 12L10 8L6 4"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                />
-              </svg>
-            </motion.div>
+            <Linkedin size={16} aria-hidden="true" />
+            View All on LinkedIn
           </motion.a>
         </motion.div>
       </div>

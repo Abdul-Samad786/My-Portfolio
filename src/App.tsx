@@ -17,15 +17,19 @@ import Education from './sections/Education';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
 
+function SectionDivider() {
+  return (
+    <div className="section-divider" aria-hidden="true" />
+  );
+}
+
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time - 2.5 seconds for nice animation
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 2500);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -40,23 +44,34 @@ function App() {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.5 }}
-          className="min-h-screen bg-slate-900"
+          style={{ backgroundColor: 'var(--bg-base)' }}
+          className="min-h-screen"
         >
+          <div className="noise-overlay" aria-hidden="true" />
           <Analytics />
           <ReadingProgress />
           <Navigation />
           <BackToTop />
           <main>
             <Hero />
-            <About />
-            <Skills />
-            <Experience />
-            <Testimonials />
-            <Projects />
-            <Clients />
-            <Education />
-            <Blog />
-            <Contact />
+            <SectionDivider />
+            <div className="section-ambient"><About /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Skills /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Experience /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Testimonials /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Projects /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Clients /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Education /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Blog /></div>
+            <SectionDivider />
+            <div className="section-ambient"><Contact /></div>
           </main>
           <Footer />
         </motion.div>

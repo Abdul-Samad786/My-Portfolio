@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef } from 'react';
-import { MapPin, Calendar, Briefcase } from 'lucide-react';
+import { MapPin, Calendar } from 'lucide-react';
 import {
   SiReact,
   SiNodedotjs,
@@ -39,54 +39,54 @@ const experiences: Experience[] = [
   {
     company: 'Green Fuel Energy',
     role: 'Senior Full Stack Developer & IoT Platform Architect',
-    subtitle: 'Platform Architect & Team Lead - NeoTAQ Industrial IoT Ecosystem',
+    subtitle: 'NeoTAQ Industrial IoT Ecosystem',
     period: 'May 2025 – Present',
     location: 'Lahore, Pakistan',
     logoColor: '#10B981',
     isCurrent: true,
     achievements: [
-      'Architected and led full-stack development of NeoTAQ industrial IoT platform, serving 15+ enterprise clients with real-time energy management',
-      'Developed NeoLog universal datalogger handling multi-protocol industrial communications (Modbus, OPC UA) for real-time data collection',
-      'Built NeoSphere cloud-based SaaS analytics platform with custom KPI engine, supporting 1000+ concurrent connections and 99.9% uptime',
+      'Architected NeoTAQ IoT platform — serving <strong>15+ enterprise clients</strong> with real-time energy management',
+      'Built NeoLog datalogger with Modbus & OPC UA for multi-protocol industrial data collection',
+      'Delivered NeoSphere SaaS analytics with <strong>99.9% uptime</strong> and 1,000+ concurrent connections',
     ],
-    technologies: ['React.js', 'Redux Toolkit', 'Socket.IO', 'Node.js', 'NestJS', 'Python', 'NATS', 'InfluxDB', 'SQLite', 'PostgreSQL', 'Modbus', 'OPC UA', 'Linux', 'Docker', 'Kubernetes', 'Grafana', 'Nginx', 'AWS', 'Edge Computing', 'Microservices', 'SaaS'],
+    technologies: ['React.js', 'Redux Toolkit', 'Socket.IO', 'Node.js', 'NestJS', 'Python', 'NATS', 'InfluxDB', 'SQLite', 'PostgreSQL', 'Docker', 'Kubernetes', 'Grafana', 'Nginx', 'AWS'],
   },
   {
     company: 'Innovent Tech Solutions',
     role: 'Full Stack Developer',
     period: 'Feb 2024 – May 2025',
     location: 'Lahore, Pakistan',
-    logoColor: '#3B82F6',
+    logoColor: '#0ea5e9',
     achievements: [
-      'Led development for Gulf government clients including Abu Dhabi Civil Defence and Saudi MOI',
-      'Built dynamic schema-driven IoT platform (Inffini) with no-code API generation',
-      'Supervised and mentored team of 4 engineers across cloud deployments',
+      'Led delivery for Gulf government clients — <strong>Abu Dhabi Civil Defence</strong> and Saudi MOI',
+      'Built Inffini IoT platform with no-code API generation and dynamic schema builder',
+      'Mentored <strong>4 engineers</strong> across cloud deployments and sprint planning',
     ],
-    technologies: ['Node.js', 'React', 'MongoDB', 'IoT', 'AWS', 'Microservices'],
+    technologies: ['Node.js', 'React', 'MongoDB', 'AWS', 'Microservices'],
   },
   {
     company: 'EnlivenAi (Pvt) Ltd',
     role: 'Full Stack Developer | Cloud Engineer',
     period: 'May 2022 – Feb 2024',
     location: 'Bahawalpur, Pakistan',
-    logoColor: '#8B5CF6',
+    logoColor: '#818cf8',
     achievements: [
-      'Built ShotPulse real-time analytics app with ML model integration',
-      'Optimized backend performance by 60% through caching and query optimization',
-      'Managed AWS infrastructure with auto-scaling, CI/CD, and monitoring',
+      'Built ShotPulse real-time analytics app integrating ML models for live sports data',
+      'Reduced API latency by <strong>60%</strong> via Redis caching and connection pooling',
+      'Managed AWS infrastructure with auto-scaling, CI/CD pipelines, and uptime monitoring',
     ],
-    technologies: ['React', 'Django', 'Flask', 'AWS', 'PostgreSQL', 'ML APIs'],
+    technologies: ['React', 'Django', 'Flask', 'AWS', 'PostgreSQL', 'Redis'],
   },
   {
     company: 'Digitalux',
     role: 'Backend Developer (Remote)',
     period: 'Jan 2024 – April 2024',
     location: 'Lahore, Pakistan',
-    logoColor: '#06B6D4',
+    logoColor: '#38bdf8',
     achievements: [
-      'Implemented real-time stock tracking for 5,000+ concurrent users with Socket.IO',
-      'Improved CRM query performance by 70% through database optimization',
-      'Created complex MongoDB aggregations for millisecond-latency analytics',
+      'Delivered real-time stock tracking for <strong>5,000+ concurrent users</strong> via Socket.IO',
+      'Improved CRM query performance by <strong>70%</strong> through MongoDB index optimization',
+      'Designed aggregation pipelines delivering millisecond-latency analytics reports',
     ],
     technologies: ['Node.js', 'Socket.IO', 'MongoDB', 'Express.js'],
   },
@@ -97,9 +97,9 @@ const experiences: Experience[] = [
     location: 'Bahawalpur, Pakistan',
     logoColor: '#F59E0B',
     achievements: [
-      'Developed responsive React.js interfaces increasing user engagement by 35%',
-      'Achieved 95% sprint completion rate in Agile environment',
-      'Collaborated with UI/UX teams for pixel-perfect implementations',
+      'Built responsive React.js interfaces increasing user engagement by <strong>35%</strong>',
+      'Maintained <strong>95% sprint completion</strong> rate in a fast-paced Agile environment',
+      'Delivered pixel-perfect Figma implementations across multiple product lines',
     ],
     technologies: ['React', 'Redux', 'Node.js', 'MongoDB', 'Express.js'],
   },
@@ -130,221 +130,233 @@ const techIcons: Record<string, React.ComponentType<{ size?: number; className?:
 
 const containerVariants = {
   hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
+  visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
 };
 
 const cardVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: [0.4, 0, 0.2, 1] as const,
-    },
-  },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.16, 1, 0.3, 1] as const } },
 };
 
 export default function Experience() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
 
-  const getCompanyInitials = (company: string) => {
-    return company
-      .split(' ')
-      .map(word => word[0])
-      .join('')
-      .substring(0, 2)
-      .toUpperCase();
-  };
+  const getCompanyInitials = (company: string) =>
+    company.split(' ').map(w => w[0]).join('').substring(0, 2).toUpperCase();
 
   return (
-    <section id="experience" ref={ref} className="relative bg-slate-800/30 py-16 lg:py-20 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section
+      id="experience"
+      ref={ref}
+      className="section-spacing relative"
+      style={{ backgroundColor: 'var(--bg-base)' }}
+    >
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Heading */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8, ease: [0.4, 0, 0.2, 1] }}
-          className="text-center mb-12 sm:mb-16"
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center mb-12"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 tracking-wide text-white">
-            Work Experience
+          <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 3rem)', fontFamily: 'Syne, sans-serif' }}>
+            Work <span className="gradient-text-sky">Experience</span>
           </h2>
-          <p className="text-slate-400 text-sm sm:text-base mb-4">5+ Years Building Enterprise Solutions</p>
-          <div className="w-20 h-1 bg-gradient-to-r from-teal via-cyan to-cyan-light rounded-full mx-auto" />
+          <p className="mt-3" style={{ color: 'var(--text-secondary)' }}>
+            5+ years building enterprise systems across IoT, fintech, and government sectors
+          </p>
         </motion.div>
 
-        {/* Experience Timeline */}
+        {/* Cross-role Stats */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="flex flex-wrap gap-3 justify-center mb-14"
+          aria-label="Career statistics"
+        >
+          {[
+            { value: '5+', label: 'Years Experience' },
+            { value: '3', label: 'Companies' },
+            { value: '15+', label: 'Enterprise Clients' },
+          ].map(({ value, label }) => (
+            <div
+              key={label}
+              className="px-5 py-2.5 rounded-xl text-sm"
+              style={{
+                background: 'var(--bg-surface)',
+                border: '1px solid var(--border-default)',
+                color: 'var(--text-secondary)',
+              }}
+            >
+              <span style={{ color: 'var(--accent-primary)', fontWeight: 700, fontFamily: 'Syne, sans-serif', marginRight: '0.35rem' }}>
+                {value}
+              </span>
+              {label}
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Timeline */}
         <div className="relative">
-          {/* Vertical Timeline Line - Desktop Only */}
-          <div className="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-teal/20 via-cyan/20 to-transparent" />
-          
+          {/* Gradient vertical line — desktop only */}
+          <div
+            className="hidden md:block absolute top-6 bottom-6 w-px"
+            style={{
+              left: '1.75rem',
+              background: 'linear-gradient(to bottom, var(--accent-primary), var(--accent-secondary), transparent)',
+            }}
+            aria-hidden="true"
+          />
+          {/* Traveling glow orb — desktop only */}
+          <div className="hidden md:block timeline-glow-orb" style={{ left: '0.5rem', right: 'auto', width: '2.5rem' }} aria-hidden="true" />
+
           <motion.div
             variants={containerVariants}
             initial="hidden"
-            animate={isInView ? "visible" : "hidden"}
-            className="space-y-8 md:space-y-10"
+            animate={isInView ? 'visible' : 'hidden'}
+            className="space-y-8"
           >
             {experiences.map((exp) => {
               const initials = getCompanyInitials(exp.company);
-
               return (
                 <motion.article
                   key={exp.company}
                   variants={cardVariants}
                   className="relative md:pl-20"
                 >
-                  {/* Timeline Dot - Desktop Only */}
-                  <div className="hidden md:flex absolute left-0 top-6 items-center justify-center">
-                    <div 
-                      className="w-4 h-4 rounded-full border-2 relative z-10"
+                  {/* Timeline Dot */}
+                  <div
+                    className="hidden md:flex absolute left-4 top-6 items-center justify-center"
+                    aria-hidden="true"
+                  >
+                    <div
+                      className="w-4 h-4 rounded-full border-2"
                       style={{
-                        backgroundColor: exp.isCurrent ? exp.logoColor : 'rgba(30, 41, 59, 0.8)',
+                        backgroundColor: exp.isCurrent ? exp.logoColor : 'var(--bg-elevated)',
                         borderColor: exp.logoColor,
-                        boxShadow: `0 0 0 4px rgba(15, 23, 42, 0.8), 0 0 20px ${exp.logoColor}40`,
+                        boxShadow: `0 0 0 4px var(--bg-base), 0 0 16px ${exp.logoColor}40`,
                       }}
-                    >
-                      {exp.isCurrent && (
-                        <motion.div
-                          className="absolute inset-0 rounded-full"
-                          style={{ backgroundColor: exp.logoColor }}
-                          animate={{ scale: [1, 1.5, 1], opacity: [1, 0, 1] }}
-                          transition={{ duration: 2, repeat: Infinity }}
-                        />
-                      )}
-                    </div>
+                    />
                   </div>
 
-                  {/* Experience Card */}
-                  <motion.div
-                    className="glass rounded-xl p-6 sm:p-8 relative overflow-hidden group"
+                  {/* Card */}
+                  <div
+                    className="glass-card p-6 sm:p-8 relative overflow-hidden"
                     style={{
-                      background: 'rgba(30, 41, 59, 0.5)',
-                      border: `1px solid ${exp.isCurrent ? `${exp.logoColor}40` : 'rgba(255, 255, 255, 0.1)'}`,
+                      borderColor: exp.isCurrent ? `${exp.logoColor}30` : 'var(--border-default)',
                       boxShadow: exp.isCurrent
-                        ? `0 8px 32px ${exp.logoColor}20, 0 0 0 1px ${exp.logoColor}20`
-                        : '0 4px 16px rgba(0, 0, 0, 0.2)',
+                        ? `var(--glow-card), 0 0 30px ${exp.logoColor}15`
+                        : 'var(--glow-card)',
                     }}
-                    whileHover={{ 
-                      y: -4,
-                      boxShadow: `0 12px 40px ${exp.logoColor}30, 0 0 0 1px ${exp.logoColor}30`,
-                    }}
-                    transition={{ duration: 0.3 }}
                   >
-                    {/* Left Border Accent */}
-                    <div 
-                      className="absolute left-0 top-0 bottom-0 w-1 rounded-l-xl"
+                    {/* Left accent line */}
+                    <div
+                      className="absolute left-0 top-0 bottom-0 w-0.5 rounded-l-2xl"
                       style={{ backgroundColor: exp.logoColor }}
+                      aria-hidden="true"
                     />
 
                     {/* Header */}
-                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-4 mb-6">
-                      <div className="flex items-start gap-4 flex-1">
-                        {/* Company Logo */}
-                        <div
-                          className="flex-shrink-0 w-14 h-14 rounded-lg flex items-center justify-center text-lg font-bold text-white"
+                    <div className="flex flex-col sm:flex-row sm:items-start gap-4 mb-5">
+                      {/* Company initials logo */}
+                      <div
+                        className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center text-sm font-bold"
                         style={{
-                          background: `linear-gradient(135deg, ${exp.logoColor}20, ${exp.logoColor}10)`,
-                            border: `2px solid ${exp.logoColor}40`,
+                          background: `linear-gradient(135deg, ${exp.logoColor}25, ${exp.logoColor}10)`,
+                          border: `1px solid ${exp.logoColor}35`,
+                          color: exp.logoColor,
+                          fontFamily: 'Syne, sans-serif',
                         }}
+                        aria-hidden="true"
                       >
                         {initials}
-                        </div>
+                      </div>
 
-                      {/* Company Info */}
-                        <div className="flex-1 min-w-0">
-                          <h3 className="text-xl sm:text-2xl font-bold text-white mb-1">
-                              {exp.company}
-                            </h3>
-                          <p className="text-base sm:text-lg font-semibold text-slate-300 mb-1">
-                              {exp.role}
-                            </p>
-                            {exp.subtitle && (
-                            <p className="text-sm text-slate-400 italic mb-2">
-                                {exp.subtitle}
-                              </p>
-                            )}
-                          <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
-                            <div className="flex items-center gap-1.5">
-                              <Calendar size={14} />
-                              <span>{exp.period}</span>
-                            </div>
-                            <div className="flex items-center gap-1.5">
-                              <MapPin size={14} />
-                              <span>{exp.location}</span>
-                          </div>
-                              {exp.isCurrent && (
-                              <div className="flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-emerald/20 border border-emerald/40">
-                                <motion.div
-                                  className="w-1.5 h-1.5 rounded-full bg-emerald"
-                                  animate={{ opacity: [1, 0.5, 1] }}
-                                  transition={{ duration: 2, repeat: Infinity }}
-                                />
-                                <span className="text-xs font-medium text-emerald">Current</span>
-                              </div>
-                              )}
-                          </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex flex-wrap items-center gap-2 mb-0.5">
+                          <h3
+                            className="text-lg font-bold"
+                            style={{ fontFamily: 'Syne, sans-serif', color: 'var(--text-primary)' }}
+                          >
+                            {exp.company}
+                          </h3>
+                          {exp.isCurrent && (
+                            <span
+                              className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-medium"
+                              style={{
+                                background: 'rgba(16, 185, 129, 0.12)',
+                                border: '1px solid rgba(16, 185, 129, 0.3)',
+                                color: '#10b981',
+                                fontFamily: 'JetBrains Mono, monospace',
+                              }}
+                            >
+                              <span className="w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ background: '#10b981' }} aria-hidden="true" />
+                              Present
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm font-semibold mb-1" style={{ color: 'var(--text-secondary)' }}>
+                          {exp.role}
+                        </p>
+                        {exp.subtitle && (
+                          <p className="text-xs mb-2 italic" style={{ color: 'var(--text-muted)' }}>
+                            {exp.subtitle}
+                          </p>
+                        )}
+                        <div className="flex flex-wrap items-center gap-4 text-xs" style={{ color: 'var(--text-muted)' }}>
+                          <span className="flex items-center gap-1">
+                            <Calendar size={12} aria-hidden="true" />
+                            {exp.period}
+                          </span>
+                          <span className="flex items-center gap-1">
+                            <MapPin size={12} aria-hidden="true" />
+                            {exp.location}
+                          </span>
                         </div>
                       </div>
                     </div>
 
                     {/* Achievements */}
-                    <div className="mb-6">
-                      <h4 className="text-xs uppercase tracking-wider text-teal font-semibold mb-3 flex items-center gap-2">
-                        <Briefcase size={14} />
-                          Key Achievements
-                        </h4>
-                      <ul className="space-y-2.5">
-                        {exp.achievements.map((achievement, i) => (
-                          <li key={i} className="flex items-start gap-3 text-sm sm:text-base text-slate-300 leading-relaxed">
-                            <div 
-                              className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2"
-                              style={{ backgroundColor: exp.logoColor }}
-                            />
-                            <span>{achievement}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul className="space-y-2.5 mb-5" aria-label="Key achievements">
+                      {exp.achievements.map((achievement, i) => (
+                        <li
+                          key={i}
+                          className="flex items-start gap-3 text-sm leading-relaxed"
+                          style={{ color: 'var(--text-secondary)' }}
+                        >
+                          <span
+                            className="flex-shrink-0 w-1.5 h-1.5 rounded-full mt-2"
+                            style={{ backgroundColor: exp.logoColor }}
+                            aria-hidden="true"
+                          />
+                          <span dangerouslySetInnerHTML={{ __html: achievement }} />
+                        </li>
+                      ))}
+                    </ul>
 
                     {/* Tech Stack */}
-                    <div className="pt-6 border-t border-white/10">
-                      <p className="text-xs text-slate-500 mb-3 uppercase tracking-wider font-semibold">Technologies</p>
+                    <div className="pt-4" style={{ borderTop: '1px solid var(--border-subtle)' }}>
+                      <p
+                        className="text-xs mb-3 uppercase tracking-wider font-semibold"
+                        style={{ color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace' }}
+                      >
+                        Stack
+                      </p>
                       <div className="flex flex-wrap gap-2">
                         {exp.technologies.map((tech) => {
                           const TechIcon = techIcons[tech];
                           return (
-                            <motion.div
-                              key={tech}
-                              className="px-3 py-1.5 rounded-lg text-xs font-medium text-slate-300 flex items-center gap-1.5 border border-white/10"
-                              style={{
-                                background: 'rgba(51, 65, 85, 0.4)',
-                              }}
-                              whileHover={{ 
-                                scale: 1.05,
-                                background: `linear-gradient(135deg, ${exp.logoColor}20, ${exp.logoColor}10)`,
-                                borderColor: `${exp.logoColor}40`,
-                                color: '#FFFFFF',
-                              }}
-                              transition={{ duration: 0.2 }}
-                            >
-                              {TechIcon && (
-                                <TechIcon size={14} className="flex-shrink-0" />
-                              )}
-                              <span className="whitespace-nowrap">{tech}</span>
-                            </motion.div>
+                            <span key={tech} className="tech-tag inline-flex items-center gap-1.5">
+                              {TechIcon && <TechIcon size={11} aria-hidden="true" />}
+                              {tech}
+                            </span>
                           );
                         })}
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 </motion.article>
               );
             })}
