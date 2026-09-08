@@ -102,7 +102,7 @@ export default function Analytics() {
 
     const handleScroll = () => {
       // Track section views based on scroll position
-      const sections = ['home', 'about', 'skills', 'experience', 'testimonials', 'projects', 'education', 'contact'];
+      const sections = ['home', 'about', 'skills', 'experience', 'education', 'blog', 'contact'];
       sections.forEach((section) => {
         const element = document.getElementById(section);
         if (element) {

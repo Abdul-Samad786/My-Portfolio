@@ -105,7 +105,7 @@ export default function About() {
                 <div className="p-2 rounded-lg bg-gradient-to-r from-teal/20 to-cyan/20 border border-teal/30 flex-shrink-0">
                   <MapPin className="text-teal" size={20} />
                 </div>
-                <span className="text-sm font-medium text-slate-300">Lahore, Pakistan</span>
+                <span className="text-sm font-medium text-slate-300">Bahawalpur, Pakistan</span>
               </motion.div>
 
               {/* Status Card */}
@@ -123,8 +123,8 @@ export default function About() {
               {/* Download CV Card */}
               <motion.a
                 variants={itemVariants}
-                href="/Ali-Tariq-Resume.pdf"
-                download="Ali-Tariq-Resume.pdf"
+                href="/Abdul-Samad-Tariq-Resume.pdf"
+                download="Abdul-Samad-Tariq-Resume.pdf"
                 className="glass rounded-lg p-4 flex items-center gap-3 border border-white/10 cursor-pointer select-none"
                 style={{ transition: 'none' }}
                 whileHover={{ 
@@ -161,11 +161,11 @@ export default function About() {
               
               <div className="space-y-4 text-base leading-relaxed">
                 <p className="text-[#E2E8F0]">
-                  Senior Full Stack Developer and IoT Platform Architect with 5+ years of experience building enterprise-grade applications and industrial IoT ecosystems. Currently leading development of NeoTAQ platform at Green Fuel Energy, serving 15+ enterprise clients with real-time energy management solutions.
+                  Machine Learning Engineer and Backend Developer with hands-on experience building AI-powered applications, Python backends, and data-driven products. Experienced in practical ML solutions — from NLP and model fine-tuning to scalable Flask/Django APIs and user-facing products.
                 </p>
                 
                 <p className="text-[#E2E8F0]">
-                  Expert in full-stack development, distributed microservices, and cloud infrastructure. Specialized in system design and solution architecture, designing scalable, high-performance systems that handle millions of operations. Proven track record delivering mission-critical solutions for government and enterprise clients with 99.9% reliability and 1000+ concurrent user support.
+                  Currently shipping personal projects across AI/ML and backend development. Passionate about combining machine learning and software engineering to turn complex problems into reliable, practical products.
                 </p>
               </div>
             </motion.div>
@@ -176,7 +176,7 @@ export default function About() {
               transition={{ delay: 0.5 }}
               className="mt-10"
             >
-              <GitHubActivity username="Alitariq-code" />
+              <GitHubActivity username="Abdul-Samad786" />
             </motion.div>
           </motion.div>
         </div>

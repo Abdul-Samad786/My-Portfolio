@@ -1,6 +1,6 @@
-# Senior Full Stack Developer Portfolio
+# Abdul Samad Tariq — Portfolio
 
-A modern, futuristic portfolio website built with React, TypeScript, and Tailwind CSS. This portfolio showcases professional expertise with a cutting-edge design that would impress FAANG companies and enterprise clients.
+Machine Learning Engineer & Backend Developer portfolio built with React, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 
@@ -112,6 +112,8 @@ src/
 
 ## 🎯 Customization
 
+The quickest way to swap in your own portfolio data is the new [CUSTOMIZATION_GUIDE.md](CUSTOMIZATION_GUIDE.md).
+
 ### Colors
 
 Edit `tailwind.config.js` to customize the color scheme:
@@ -131,6 +133,13 @@ Update the content in each section file:
 - `src/sections/Experience.tsx` - Work experience
 - `src/sections/Projects.tsx` - Project details
 - `src/sections/Contact.tsx` - Contact information
+
+### Deployment
+
+For Vercel, set these environment variables if you use the related integrations:
+
+- `VITE_FORMSPREE_ID` for the contact form
+- `VITE_GA_MEASUREMENT_ID` for analytics
 
 ### Images
 
@@ -162,9 +171,8 @@ This project is open source and available for personal and commercial use.
 
 ## 👨‍💻 Author
 
-Senior Full Stack Developer
+Abdul Samad Tariq — Machine Learning Engineer & Backend Developer
 
 ---
 
-Built with ❤️ using React, TypeScript, and Tailwind CSS
-# my-portfolio
+Built with React, TypeScript, and Tailwind CSS

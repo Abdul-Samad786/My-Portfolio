@@ -5,10 +5,9 @@ import { useRef, useState } from 'react';
 const techCategories = {
   frontend: {
     title: 'Frontend',
-    description: 'React dashboards for IoT analytics and real-time data visualization.',
+    description: 'Responsive React interfaces and dashboards for AI and backend-powered products.',
     icons: [
       { name: 'React.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg' },
-      { name: 'Next.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg' },
       { name: 'TypeScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg' },
       { name: 'JavaScript', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg' },
       { name: 'Tailwind CSS', src: 'https://raw.githubusercontent.com/devicons/devicon/v2.16.0/icons/tailwindcss/tailwindcss-original.svg' },
@@ -19,70 +18,46 @@ const techCategories = {
   },
   backend: {
     title: 'Backend & APIs',
-    description: 'Scalable server-side systems powering enterprise-grade IoT and analytics platforms.',
+    description: 'Scalable Python backends with Flask, Django, and documented REST APIs on MongoDB.',
     icons: [
-      { name: 'Node.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg' },
-      { name: 'NestJS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nestjs/nestjs-plain.svg' },
-      { name: 'Express.js', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg' },
       { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+      { name: 'Flask', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
       { name: 'Django', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
       { name: 'FastAPI', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
-      { name: 'GraphQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/graphql/graphql-plain.svg' },
-      { name: 'Apache Kafka', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg' },
-      { name: 'RabbitMQ', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rabbitmq/rabbitmq-original.svg' },
+    ],
+  },
+  mlAi: {
+    title: 'Machine Learning & AI',
+    description: 'End-to-end ML pipelines, NLP embeddings, model fine-tuning, and interpretable AI.',
+    icons: [
+      { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
+      { name: 'PyTorch', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
+      { name: 'TensorFlow', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg' },
+      { name: 'scikit-learn', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
+      { name: 'Pandas', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
+      { name: 'NumPy', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
     ],
   },
   database: {
     title: 'Databases',
-    description: 'Multi-database strategies for time-series, relational, and document-oriented data.',
+    description: 'Document and relational data modeling for production APIs and ML feature stores.',
     icons: [
       { name: 'MongoDB', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg' },
       { name: 'PostgreSQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
       { name: 'MySQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
       { name: 'Redis', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-      { name: 'InfluxDB', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/influxdb/influxdb-original.svg' },
     ],
   },
   cloud: {
     title: 'Cloud & DevOps',
-    description: 'Cloud infrastructure, containerization, and automated CI/CD pipelines.',
+    description: 'Containerized deployments, Linux servers, and CI/CD for reliable shipping.',
     icons: [
       { name: 'AWS', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg' },
       { name: 'Docker', src: 'https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/docker/docker.png' },
-      { name: 'Kubernetes', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/kubernetes/kubernetes-plain.svg' },
-      { name: 'Terraform', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/terraform/terraform-original.svg' },
-      { name: 'Ansible', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/ansible/ansible-original.svg' },
       { name: 'Linux', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg' },
-      { name: 'Jenkins', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/jenkins/jenkins-original.svg' },
       { name: 'Nginx', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg' },
       { name: 'GitHub Actions', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
       { name: 'GitLab CI/CD', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg' },
-      { name: 'Helm', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/helm/helm-original-wordmark.svg' },
-    ],
-  },
-  realtime: {
-    title: 'Real-Time & IoT',
-    description: 'Multi-protocol real-time communication for industrial IoT at scale.',
-    icons: [
-      { name: 'Socket.IO', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/socketio/socketio-original.svg' },
-      { name: 'Grafana', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/grafana/grafana-original.svg' },
-      { name: 'MQTT', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mqtt/mqtt-original.svg' },
-      { name: 'WebSocket', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/websocket/websocket-original.svg' },
-      { name: 'Apache Kafka', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/apachekafka/apachekafka-original.svg' },
-      { name: 'NATS', src: 'https://nats.io/img/nats-icon-color.svg' },
-      { name: 'Prometheus', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/prometheus/prometheus-original.svg' },
-    ],
-  },
-  architecture: {
-    title: 'Architecture',
-    description: 'Designing distributed systems and microservices for enterprise-scale products.',
-    icons: [
-      { name: 'Microservices', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
-      { name: 'Distributed Systems', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apachekafka/apachekafka-original.svg' },
-      { name: 'Cloud Architecture', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg' },
-      { name: 'API Design', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
-      { name: 'System Design', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/kubernetes/kubernetes-plain.svg' },
-      { name: 'Solution Arch.', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original.svg' },
     ],
   },
 };
@@ -92,7 +67,7 @@ type CategoryKey = keyof typeof techCategories;
 export default function Skills() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [activeTab, setActiveTab] = useState<CategoryKey>('frontend');
+  const [activeTab, setActiveTab] = useState<CategoryKey>('mlAi');
   const [hoveredTech, setHoveredTech] = useState<string | null>(null);
 
   const category = techCategories[activeTab];
@@ -120,7 +95,7 @@ export default function Skills() {
             <span className="gradient-text-sky">Skills</span>
           </h2>
           <p className="max-w-xl mx-auto" style={{ color: 'var(--text-secondary)', lineHeight: 1.75 }}>
-            A deep toolkit across the full development stack — from sensor protocols to cloud infrastructure.
+            A practical toolkit across machine learning, Python backends, and modern web interfaces.
           </p>
         </motion.div>
 

@@ -7,9 +7,7 @@ const navItems = [
   { name: 'About', href: '#about' },
   { name: 'Skills', href: '#skills' },
   { name: 'Experience', href: '#experience' },
-  { name: 'Projects', href: '#projects' },
-  { name: 'Clients', href: '#clients' },
-  { name: 'Testimonials', href: '#testimonials' },
+  { name: 'Education', href: '#education' },
   { name: 'Blog', href: '#blog' },
   { name: 'Contact', href: '#contact' },
 ];
@@ -119,10 +117,10 @@ export default function Navigation() {
             </div>
             <div className="flex flex-col">
               <span className="text-base font-bold tracking-tight" style={{ color: 'var(--text-primary)', fontFamily: 'Syne, sans-serif' }}>
-                Ali Tariq
+                Abdul Samad Tariq
               </span>
               <span className="text-[10px] hidden sm:block" style={{ color: 'var(--text-muted)', fontFamily: 'JetBrains Mono, monospace', letterSpacing: '0.08em' }}>
-                FULL STACK · IOT
+                FULL STACK · AI/ML
               </span>
             </div>
           </motion.a>

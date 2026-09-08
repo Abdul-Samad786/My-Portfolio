@@ -10,9 +10,8 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
-import Testimonials from './sections/Testimonials';
-import Projects from './sections/Projects';
-import Clients from './sections/Clients';
+// import Projects from './sections/Projects'; // add when personal projects are ready
+// import Clients from './sections/Clients';
 import Education from './sections/Education';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
@@ -60,12 +59,6 @@ function App() {
             <div className="section-ambient"><Skills /></div>
             <SectionDivider />
             <div className="section-ambient"><Experience /></div>
-            <SectionDivider />
-            <div className="section-ambient"><Testimonials /></div>
-            <SectionDivider />
-            <div className="section-ambient"><Projects /></div>
-            <SectionDivider />
-            <div className="section-ambient"><Clients /></div>
             <SectionDivider />
             <div className="section-ambient"><Education /></div>
             <SectionDivider />

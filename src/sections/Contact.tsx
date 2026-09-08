@@ -29,16 +29,16 @@ interface FormErrors {
 type SubmitState = 'idle' | 'loading' | 'success' | 'error';
 
 const contactItems = [
-  { icon: Mail, label: 'Email', value: 'alitariqcode@gmail.com', href: 'mailto:alitariqcode@gmail.com' },
-  { icon: Phone, label: 'Phone', value: '+92 306 7895964', href: 'tel:+923067895964' },
-  { icon: MapPin, label: 'Location', value: 'Lahore, Pakistan', href: '' },
+  { icon: Mail, label: 'Email', value: 'abdulcode138@gmail.com', href: 'mailto:abdulcode138@gmail.com' },
+  { icon: Phone, label: 'Phone', value: '+92 327 7134238', href: 'tel:+923277134238' },
+  { icon: MapPin, label: 'Location', value: 'Bahawalpur, Pakistan', href: '' },
   { icon: Clock, label: 'Response Time', value: '~24 hours', href: '' },
 ];
 
 const socialLinks = [
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/software-engineerali', label: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com/Alitariq-code', label: 'GitHub' },
-  { icon: Mail, href: 'mailto:alitariqcode@gmail.com', label: 'Email' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/abdul-samad-tariq-266b5631b/', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/Abdul-Samad786', label: 'GitHub' },
+  { icon: Mail, href: 'mailto:abdulcode138@gmail.com', label: 'Email' },
 ];
 
 function FloatInput({

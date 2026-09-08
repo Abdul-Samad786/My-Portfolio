@@ -83,7 +83,7 @@ export default function Blog() {
             Technical <span className="bg-gradient-to-r from-teal via-cyan to-teal bg-clip-text text-transparent">Blog</span>
           </h2>
           <p className="text-slate-400 text-base sm:text-lg mb-6 max-w-2xl mx-auto leading-relaxed">
-            Insights on full stack development, IoT platforms, backend optimization, and enterprise solutions
+            Notes on machine learning, AI systems, and Python backend development — from model pipelines to production APIs
           </p>
           <div className="w-24 h-1.5 bg-gradient-to-r from-teal-500 via-cyan-500 to-teal-500 rounded-full mx-auto shadow-lg" />
         </motion.div>

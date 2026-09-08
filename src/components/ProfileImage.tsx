@@ -2,17 +2,15 @@ import { motion } from 'framer-motion';
 import { useState, useEffect } from 'react';
 import {
   SiReact,
-  SiNodedotjs,
-  SiNestjs,
   SiTypescript,
   SiPython,
+  SiDjango,
+  SiFlask,
   SiMongodb,
-  SiPostgresql,
-  SiAmazon as SiAws,
+  SiPytorch,
+  SiScikitlearn,
   SiDocker,
-  SiKubernetes,
-  SiSocketdotio,
-  SiGrafana,
+  SiTensorflow,
 } from 'react-icons/si';
 
 interface ProfileImageProps {
@@ -29,20 +27,17 @@ interface TechIcon {
   tooltipColor: string;
 }
 
-// Tech icons configuration
 const techIcons: TechIcon[] = [
-  { name: 'React', icon: SiReact, size: 'large', angle: 0, tooltipColor: '#61DAFB' },
-  { name: 'Node.js', icon: SiNodedotjs, size: 'large', angle: 51, tooltipColor: '#339933' },
-  { name: 'NestJS', icon: SiNestjs, size: 'large', angle: 102, tooltipColor: '#E0234E' },
-  { name: 'TypeScript', icon: SiTypescript, size: 'large', angle: 153, tooltipColor: '#3178C6' },
-  { name: 'Python', icon: SiPython, size: 'large', angle: 204, tooltipColor: '#3776AB' },
-  { name: 'MongoDB', icon: SiMongodb, size: 'large', angle: 255, tooltipColor: '#47A248' },
-  { name: 'PostgreSQL', icon: SiPostgresql, size: 'large', angle: 306, tooltipColor: '#336791' },
-  { name: 'AWS', icon: SiAws, size: 'small', angle: 0, tooltipColor: '#FF9900' },
-  { name: 'Docker', icon: SiDocker, size: 'small', angle: 60, tooltipColor: '#2496ED' },
-  { name: 'Kubernetes', icon: SiKubernetes, size: 'small', angle: 120, tooltipColor: '#326CE5' },
-  { name: 'Socket.IO', icon: SiSocketdotio, size: 'small', angle: 180, tooltipColor: '#010101' },
-  { name: 'Grafana', icon: SiGrafana, size: 'small', angle: 240, tooltipColor: '#F46800' },
+  { name: 'Python', icon: SiPython, size: 'large', angle: 0, tooltipColor: '#3776AB' },
+  { name: 'PyTorch', icon: SiPytorch, size: 'large', angle: 51, tooltipColor: '#EE4C2C' },
+  { name: 'TensorFlow', icon: SiTensorflow, size: 'large', angle: 102, tooltipColor: '#FF6F00' },
+  { name: 'scikit-learn', icon: SiScikitlearn, size: 'large', angle: 153, tooltipColor: '#F7931E' },
+  { name: 'Django', icon: SiDjango, size: 'large', angle: 204, tooltipColor: '#092E20' },
+  { name: 'Flask', icon: SiFlask, size: 'large', angle: 255, tooltipColor: '#000000' },
+  { name: 'MongoDB', icon: SiMongodb, size: 'large', angle: 306, tooltipColor: '#47A248' },
+  { name: 'React', icon: SiReact, size: 'small', angle: 0, tooltipColor: '#61DAFB' },
+  { name: 'TypeScript', icon: SiTypescript, size: 'small', angle: 90, tooltipColor: '#3178C6' },
+  { name: 'Docker', icon: SiDocker, size: 'small', angle: 180, tooltipColor: '#2496ED' },
 ];
 
 const imageVariants = {
@@ -382,10 +377,10 @@ export default function ProfileImage({
             className="w-full h-full relative"
           >
             {/* Image wrapper */}
-            <div className="w-full h-full relative">
+            {/* <div className="w-full h-full relative">
               <img
-                src="/no-backgroud.png"
-                alt="Ali Tariq - Senior Full Stack Software Engineer"
+                src="/Abdul-pic.png"
+                alt="Abdul Samad Tariq - Machine Learning Engineer"
                 className="absolute top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-full object-cover shadow-2xl"
                 style={{
                   height: `${containerSize * 1.1}px`,
@@ -398,7 +393,7 @@ export default function ProfileImage({
                 loading="eager"
                 fetchPriority="high"
               />
-            </div>
+            </div> */}
           </motion.div>
         </div>
       ) : (
@@ -422,8 +417,8 @@ export default function ProfileImage({
             <div className="p-1 rounded-full bg-slate-800/60 backdrop-blur-lg">
             {/* Actual Image */}
             <img
-                src="/no-backgroud.png"
-              alt="Ali Tariq - Senior Full Stack Software Engineer"
+                src="/Abdul-pic.png"
+              alt="Abdul Samad Tariq - Machine Learning Engineer & Backend Developer"
               className={`${sizeClasses[size]} rounded-full object-cover shadow-2xl`}
               style={{
                 boxShadow: size === 'medium'

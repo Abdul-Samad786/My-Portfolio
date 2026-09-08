@@ -36,8 +36,8 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToProjects = () => {
-    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToExperience = () => {
+    document.querySelector('#experience')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -143,7 +143,7 @@ export default function Hero() {
                   color: 'var(--text-primary)',
                 }}
               >
-                Ali{' '}
+                Abdul Samad{' '}
                 <span className="hero-name-gradient">Tariq</span>
               </motion.h1>
 
@@ -160,7 +160,7 @@ export default function Hero() {
                 <span className="opacity-50">&gt;</span>
                 <Typewriter
                   options={{
-                    strings: ['Full Stack Developer', 'IoT Platform Architect', 'Cloud Engineer', 'Software Engineer'],
+                    strings: ['Machine Learning Engineer', 'Backend Developer', 'AI / NLP Builder'],
                     autoStart: true,
                     loop: true,
                     delay: 65,
@@ -180,8 +180,8 @@ export default function Hero() {
                   fontFamily: 'DM Sans, sans-serif',
                 }}
               >
-                Building mission-critical IoT platforms and enterprise systems
-                for 15+ clients across the Gulf and beyond.
+                Building AI/ML solutions and scalable Python backends —
+                turning complex problems into practical software and intelligent systems.
               </motion.p>
 
               {/* Stat Pills */}
@@ -191,9 +191,8 @@ export default function Hero() {
                 aria-label="Career highlights"
               >
                 {[
-                  { value: '5+', label: 'Years' },
-                  { value: '15+', label: 'Clients' },
-                  { value: '99.9%', label: 'Uptime' },
+                  { value: '2+', label: 'Years' },
+                  { value: 'ML + Backend', label: 'Focus' },
                 ].map(({ value, label }) => (
                   <div key={label} className="stat-pill">
                     <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>{value}</span>
@@ -209,10 +208,10 @@ export default function Hero() {
               >
                 {/* Primary — Download Resume */}
                 <motion.a
-                  href="/Ali-Tariq-Resume.pdf"
-                  download="Ali-Tariq-Resume.pdf"
+                  href="/Abdul-Samad-Tariq-Resume.pdf"
+                  download="Abdul-Samad-Tariq-Resume.pdf"
                   onClick={() => {
-                    trackDownload('Ali-Tariq-Resume.pdf');
+                    trackDownload('Abdul-Samad-Tariq-Resume.pdf');
                     trackButtonClick('Download Resume', 'Hero');
                   }}
                   className="btn-primary"
@@ -229,15 +228,15 @@ export default function Hero() {
                 <motion.button
                   onClick={() => {
                     trackButtonClick('View My Work', 'Hero');
-                    scrollToProjects();
+                    scrollToExperience();
                   }}
                   className="btn-secondary"
                   whileHover={{ translateY: -2 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ duration: 0.2 }}
-                  aria-label="View my projects"
+                  aria-label="View my experience"
                 >
-                  View My Work
+                  View Experience
                   <ArrowRight size={16} aria-hidden="true" />
                 </motion.button>
               </motion.div>

@@ -2,12 +2,12 @@ import { motion } from 'framer-motion';
 import { Linkedin, Github, Mail } from 'lucide-react';
 
 const socialLinks = [
-  { icon: Linkedin, href: 'https://www.linkedin.com/in/software-engineerali', label: 'LinkedIn' },
-  { icon: Github, href: 'https://github.com/Alitariq-code', label: 'GitHub' },
-  { icon: Mail, href: 'mailto:alitariqcode@gmail.com', label: 'Email' },
+  { icon: Linkedin, href: 'https://www.linkedin.com/in/abdul-samad-tariq-266b5631b/', label: 'LinkedIn' },
+  { icon: Github, href: 'https://github.com/Abdul-Samad786', label: 'GitHub' },
+  { icon: Mail, href: 'mailto:abdulcode138@gmail.com', label: 'Email' },
 ];
 
-const quickLinks = ['About', 'Skills', 'Experience', 'Projects', 'Contact'];
+const quickLinks = ['About', 'Skills', 'Experience', 'Blog', 'Contact'];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -33,10 +33,10 @@ export default function Footer() {
               className="mb-2"
               style={{ fontFamily: 'Syne, sans-serif', color: 'var(--text-primary)', fontSize: '1.1rem' }}
             >
-              Ali Tariq
+              Abdul Samad Tariq
             </h3>
             <p className="text-sm mb-5 leading-relaxed" style={{ color: 'var(--text-muted)' }}>
-              Full Stack Developer specializing in IoT platforms and enterprise solutions.
+              Machine Learning Engineer & Backend Developer. Building AI systems and scalable Python APIs.
             </p>
             <div className="flex gap-3">
               {socialLinks.map(({ icon: Icon, href, label }) => (
@@ -108,18 +108,18 @@ export default function Footer() {
             <ul className="space-y-2 text-sm">
               <li>
                 <a
-                  href="mailto:alitariqcode@gmail.com"
+                  href="mailto:abdulcode138@gmail.com"
                   className="transition-colors duration-200"
                   style={{ color: 'var(--text-muted)' }}
                   onMouseEnter={e => (e.currentTarget.style.color = 'var(--accent-primary)')}
                   onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-muted)')}
                 >
-                  alitariqcode@gmail.com
+                  abdulcode138@gmail.com
                 </a>
               </li>
               <li>
                 <a
-                  href="https://www.linkedin.com/in/software-engineerali"
+                  href="https://www.linkedin.com/in/abdul-samad-tariq-266b5631b/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors duration-200"
@@ -132,7 +132,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/Alitariq-code"
+                  href="https://github.com/Abdul-Samad786"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="transition-colors duration-200"
@@ -152,7 +152,7 @@ export default function Footer() {
           className="pt-6 flex flex-col sm:flex-row justify-between items-center gap-3 text-xs"
           style={{ borderTop: '1px solid var(--border-subtle)', color: 'var(--text-muted)' }}
         >
-          <span>© {currentYear} Ali Tariq. All rights reserved.</span>
+          <span>© {currentYear} Abdul Samad Tariq. All rights reserved.</span>
           <span style={{ fontFamily: 'JetBrains Mono, monospace' }}>
             Built with React & Vite
           </span>

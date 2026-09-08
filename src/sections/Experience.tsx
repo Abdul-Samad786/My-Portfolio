@@ -3,24 +3,13 @@ import { useInView } from 'framer-motion';
 import { useRef } from 'react';
 import { MapPin, Calendar } from 'lucide-react';
 import {
-  SiReact,
-  SiNodedotjs,
-  SiNestjs,
   SiMongodb,
-  SiPostgresql,
-  SiAmazon as SiAws,
-  SiDocker,
-  SiSocketdotio,
-  SiGrafana,
   SiPython,
   SiDjango,
   SiFlask,
-  SiRedis,
-  SiKubernetes,
-  SiRedux,
-  SiInfluxdb,
-  SiSqlite,
-  SiNginx,
+  SiPytorch,
+  SiScikitlearn,
+  SiTensorflow,
 } from 'react-icons/si';
 
 interface Experience {
@@ -37,95 +26,56 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    company: 'Green Fuel Energy',
-    role: 'Senior Full Stack Developer & IoT Platform Architect',
-    subtitle: 'NeoTAQ Industrial IoT Ecosystem',
-    period: 'May 2025 – Present',
-    location: 'Lahore, Pakistan',
+    company: 'Personal Projects',
+    role: 'Independent Developer',
+    period: 'February 2026 – Present',
+    location: 'Bahawalpur, Pakistan',
     logoColor: '#10B981',
     isCurrent: true,
     achievements: [
-      'Architected NeoTAQ IoT platform — serving <strong>15+ enterprise clients</strong> with real-time energy management',
-      'Built NeoLog datalogger with Modbus & OPC UA for multi-protocol industrial data collection',
-      'Delivered NeoSphere SaaS analytics with <strong>99.9% uptime</strong> and 1,000+ concurrent connections',
+      'Building and shipping personal projects spanning <strong>machine learning</strong> and <strong>backend development</strong>',
+      'Deepening skills in NLP, model fine-tuning, and scalable Python web services through hands-on builds',
+      'Exploring end-to-end product ideas — from data pipelines and APIs to deployment and documentation',
     ],
-    technologies: ['React.js', 'Redux Toolkit', 'Socket.IO', 'Node.js', 'NestJS', 'Python', 'NATS', 'InfluxDB', 'SQLite', 'PostgreSQL', 'Docker', 'Kubernetes', 'Grafana', 'Nginx', 'AWS'],
+    technologies: ['Python', 'Django', 'Flask', 'MongoDB', 'PyTorch', 'scikit-learn'],
   },
   {
-    company: 'Innovent Tech Solutions',
-    role: 'Full Stack Developer',
-    period: 'Feb 2024 – May 2025',
-    location: 'Lahore, Pakistan',
+    company: 'Holistic TLC',
+    role: 'Junior Backend Developer',
+    period: 'August 2025 – February 2026',
+    location: 'Bahawalpur, Pakistan',
     logoColor: '#0ea5e9',
     achievements: [
-      'Led delivery for Gulf government clients — <strong>Abu Dhabi Civil Defence</strong> and Saudi MOI',
-      'Built Inffini IoT platform with no-code API generation and dynamic schema builder',
-      'Mentored <strong>4 engineers</strong> across cloud deployments and sprint planning',
+      'Developed and maintained scalable backend applications using the <strong>Flask</strong> framework with <strong>MongoDB</strong> as the primary database, ensuring high performance and reliability under production workloads',
+      'Designed backend architecture with scalability as a core principle, implementing modular and maintainable code structures to support growing application demands',
+      'Led migration initiative from <strong>Flask to Django</strong>, demonstrating adaptability across Python web frameworks while maintaining continuity of backend services',
+      'Built and documented <strong>RESTful APIs</strong> to support frontend integration and third-party service communication, following best practices for security and performance',
     ],
-    technologies: ['Node.js', 'React', 'MongoDB', 'AWS', 'Microservices'],
+    technologies: ['Python', 'Flask', 'Django', 'MongoDB', 'REST APIs'],
   },
   {
-    company: 'EnlivenAi (Pvt) Ltd',
-    role: 'Full Stack Developer | Cloud Engineer',
-    period: 'May 2022 – Feb 2024',
+    company: 'Enliven AI',
+    role: 'Machine Learning Engineer',
+    period: 'October 2024 – August 2025',
     location: 'Bahawalpur, Pakistan',
     logoColor: '#818cf8',
     achievements: [
-      'Built ShotPulse real-time analytics app integrating ML models for live sports data',
-      'Reduced API latency by <strong>60%</strong> via Redis caching and connection pooling',
-      'Managed AWS infrastructure with auto-scaling, CI/CD pipelines, and uptime monitoring',
+      'Built an end-to-end ML solution for housing price prediction, integrating <strong>NLP embeddings</strong> and regression models (Linear Regression, Random Forest, DNN) with <strong>SHAP</strong> for interpretability, optimizing property listing success predictions',
+      'Developed an advanced unit conversion system using <strong>SmolLM2</strong>, implementing in-context learning, <strong>LoRA</strong> fine-tuning, and RFT to enhance reasoning, achieving high accuracy in generating precise conversion answers across diverse units',
+      'Designed a generalized text-to-speech voice cloning system using the <strong>YourTTS</strong> model, enabling multilingual speech synthesis from user-provided text and WAV files, optimized for Google Colab with GPU acceleration',
     ],
-    technologies: ['React', 'Django', 'Flask', 'AWS', 'PostgreSQL', 'Redis'],
-  },
-  {
-    company: 'Digitalux',
-    role: 'Backend Developer (Remote)',
-    period: 'Jan 2024 – April 2024',
-    location: 'Lahore, Pakistan',
-    logoColor: '#38bdf8',
-    achievements: [
-      'Delivered real-time stock tracking for <strong>5,000+ concurrent users</strong> via Socket.IO',
-      'Improved CRM query performance by <strong>70%</strong> through MongoDB index optimization',
-      'Designed aggregation pipelines delivering millisecond-latency analytics reports',
-    ],
-    technologies: ['Node.js', 'Socket.IO', 'MongoDB', 'Express.js'],
-  },
-  {
-    company: 'Enigmatix (Pvt) Ltd',
-    role: 'MERN Stack Developer',
-    period: 'Dec 2021 – Dec 2022',
-    location: 'Bahawalpur, Pakistan',
-    logoColor: '#F59E0B',
-    achievements: [
-      'Built responsive React.js interfaces increasing user engagement by <strong>35%</strong>',
-      'Maintained <strong>95% sprint completion</strong> rate in a fast-paced Agile environment',
-      'Delivered pixel-perfect Figma implementations across multiple product lines',
-    ],
-    technologies: ['React', 'Redux', 'Node.js', 'MongoDB', 'Express.js'],
+    technologies: ['Python', 'PyTorch', 'TensorFlow', 'scikit-learn', 'NLP', 'SHAP', 'LoRA', 'YourTTS'],
   },
 ];
 
 const techIcons: Record<string, React.ComponentType<{ size?: number; className?: string }>> = {
-  'React': SiReact,
-  'React.js': SiReact,
-  'Node.js': SiNodedotjs,
-  'NestJS': SiNestjs,
   'MongoDB': SiMongodb,
-  'PostgreSQL': SiPostgresql,
-  'AWS': SiAws,
-  'Docker': SiDocker,
-  'Socket.IO': SiSocketdotio,
-  'Grafana': SiGrafana,
   'Python': SiPython,
   'Django': SiDjango,
   'Flask': SiFlask,
-  'Redis': SiRedis,
-  'Kubernetes': SiKubernetes,
-  'Redux': SiRedux,
-  'Redux Toolkit': SiRedux,
-  'InfluxDB': SiInfluxdb,
-  'SQLite': SiSqlite,
-  'Nginx': SiNginx,
+  'PyTorch': SiPytorch,
+  'scikit-learn': SiScikitlearn,
+  'TensorFlow': SiTensorflow,
 };
 
 const containerVariants = {
@@ -164,7 +114,7 @@ export default function Experience() {
             Work <span className="gradient-text-sky">Experience</span>
           </h2>
           <p className="mt-3" style={{ color: 'var(--text-secondary)' }}>
-            5+ years building enterprise systems across IoT, fintech, and government sectors
+            Building ML systems and scalable Python backends — from research to production
           </p>
         </motion.div>
 
@@ -177,9 +127,9 @@ export default function Experience() {
           aria-label="Career statistics"
         >
           {[
-            { value: '5+', label: 'Years Experience' },
-            { value: '3', label: 'Companies' },
-            { value: '15+', label: 'Enterprise Clients' },
+            { value: '2+', label: 'Years Experience' },
+            { value: '2', label: 'Companies' },
+            { value: 'ML + Backend', label: 'Focus' },
           ].map(({ value, label }) => (
             <div
               key={label}

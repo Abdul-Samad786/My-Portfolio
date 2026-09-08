@@ -69,7 +69,7 @@ export default function Education() {
               <div className="flex flex-wrap items-center gap-4 text-sm text-slate-400">
                 <div className="flex items-center gap-1.5">
                   <Calendar size={14} className="text-cyan-400" />
-                  <span>2018 - 2022</span>
+                  <span>2024 - 2028</span>
                 </div>
                 <div className="flex items-center gap-1.5">
                   <Award size={14} className="text-cyan-400" />
