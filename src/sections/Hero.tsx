@@ -160,7 +160,7 @@ export default function Hero() {
                 <span className="opacity-50">&gt;</span>
                 <Typewriter
                   options={{
-                    strings: ['Machine Learning Engineer', 'Backend Developer', 'AI / NLP Builder'],
+                    strings: ['Full Stack Developer', 'Machine Learning Engineer', 'AI Engineer'],
                     autoStart: true,
                     loop: true,
                     delay: 65,
@@ -180,8 +180,7 @@ export default function Hero() {
                   fontFamily: 'DM Sans, sans-serif',
                 }}
               >
-                Building AI/ML solutions and scalable Python backends —
-                turning complex problems into practical software and intelligent systems.
+                I build AI/ML systems and backend architecture that turn complex problems into practical, production-ready software.
               </motion.p>
 
               {/* Stat Pills */}

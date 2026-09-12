@@ -28,7 +28,7 @@ const experiences: Experience[] = [
   {
     company: 'Personal Projects',
     role: 'Independent Developer',
-    period: 'February 2026 – Present',
+    period: 'March 2026 – Present',
     location: 'Bahawalpur, Pakistan',
     logoColor: '#10B981',
     isCurrent: true,
@@ -41,8 +41,8 @@ const experiences: Experience[] = [
   },
   {
     company: 'Holistic TLC',
-    role: 'Junior Backend Developer',
-    period: 'August 2025 – February 2026',
+    role: 'Backend Engineer',
+    period: 'Feb 2025 – March 2026',
     location: 'Bahawalpur, Pakistan',
     logoColor: '#0ea5e9',
     achievements: [
@@ -56,7 +56,7 @@ const experiences: Experience[] = [
   {
     company: 'Enliven AI',
     role: 'Machine Learning Engineer',
-    period: 'October 2024 – August 2025',
+    period: 'May 2023 – Jan 2025',
     location: 'Bahawalpur, Pakistan',
     logoColor: '#818cf8',
     achievements: [
