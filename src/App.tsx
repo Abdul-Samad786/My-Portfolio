@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Navigation from './components/Navigation';
 import Loading from './components/Loading';
 import ReadingProgress from './components/ReadingProgress';
@@ -15,6 +16,12 @@ import Experience from './sections/Experience';
 import Education from './sections/Education';
 import Blog from './sections/Blog';
 import Contact from './sections/Contact';
+import { AdminAuthProvider } from './contexts/AdminAuthContext';
+import AdminLogin from './pages/admin/Login';
+import AdminLayout from './pages/admin/AdminLayout';
+import ProtectedRoute from './pages/admin/ProtectedRoute';
+import BlogList from './pages/admin/BlogList';
+import BlogForm from './pages/admin/BlogForm';
 
 function SectionDivider() {
   return (
@@ -22,7 +29,7 @@ function SectionDivider() {
   );
 }
 
-function App() {
+function Portfolio() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -70,6 +77,27 @@ function App() {
         </motion.div>
       )}
     </AnimatePresence>
+  );
+}
+
+function App() {
+  return (
+    <BrowserRouter>
+      <AdminAuthProvider>
+        <Routes>
+          <Route path="/" element={<Portfolio />} />
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route path="/admin" element={<ProtectedRoute />}>
+            <Route element={<AdminLayout />}>
+              <Route index element={<Navigate to="blogs" replace />} />
+              <Route path="blogs" element={<BlogList />} />
+              <Route path="blogs/new" element={<BlogForm mode="create" />} />
+              <Route path="blogs/:id/edit" element={<BlogForm mode="edit" />} />
+            </Route>
+          </Route>
+        </Routes>
+      </AdminAuthProvider>
+    </BrowserRouter>
   );
 }
 

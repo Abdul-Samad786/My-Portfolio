@@ -37,9 +37,9 @@ export default function GitHubActivity({ username }: GitHubActivityProps) {
           if (userResponse.status === 403) {
             console.warn('GitHub API rate limit reached, using fallback data');
             setStats({
-              totalCommits: 500,
-              totalRepos: 20, // Fallback
-              totalStars: 50,
+              totalCommits: 800,
+              totalRepos: 25, // Fallback
+              totalStars: 10,
               totalForks: 10, // Fallback
               recentRepos: [], // Empty array for fallback
             });
