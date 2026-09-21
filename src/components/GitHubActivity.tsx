@@ -58,10 +58,10 @@ export default function GitHubActivity({ username }: GitHubActivityProps) {
           if (reposResponse.status === 403) {
             console.warn('GitHub API rate limit reached, using fallback data');
             setStats({
-              totalCommits: 500,
-              totalRepos: 20,
-              totalStars: 50,
-              totalForks: 10,
+              totalCommits: 800,
+              totalRepos: 23,
+              totalStars: 10,
+              totalForks: 2,
               recentRepos: [],
             });
             setLoading(false);
@@ -73,7 +73,7 @@ export default function GitHubActivity({ username }: GitHubActivityProps) {
 
         // Filter out forks and calculate stats
         const publicRepos = reposData.filter((repo: any) => !repo.fork);
-        const totalForks = publicRepos.reduce((sum: number, repo: any) => sum + repo.forks_count, 0);
+        const totalForks = publicRepos.reduce((sum: number, repo: any) => sum + repo.forks_count, 2);
 
         // Fetch commits from repositories to get accurate count
         // Get top 15 most active repositories (sorted by update date)
@@ -185,9 +185,9 @@ export default function GitHubActivity({ username }: GitHubActivityProps) {
           }));
 
         setStats({
-          totalCommits: 500, // Hardcoded value
+          totalCommits: 800, // Hardcoded value
           totalRepos: publicRepos.length,
-          totalStars: 50, // Hardcoded value
+          totalStars: 10, // Hardcoded value
           totalForks,
           recentRepos,
         });
@@ -197,7 +197,7 @@ export default function GitHubActivity({ username }: GitHubActivityProps) {
         // On error, show fallback data instead of hiding component
         console.warn('GitHub API Error, using fallback data:', err);
         setStats({
-          totalCommits: 500,
+          totalCommits: 800,
           totalRepos: 20,
           totalStars: 50,
           totalForks: 10,
@@ -326,7 +326,7 @@ export default function GitHubActivity({ username }: GitHubActivityProps) {
           transition={{ duration: 0.2 }}
         >
           <GitCommit className="text-cyan mx-auto mb-2" size={20} />
-          <div className="text-2xl font-bold text-white mb-1">500+</div>
+          <div className="text-2xl font-bold text-white mb-1">800+</div>
           <div className="text-xs text-slate-400">Commits</div>
         </motion.div>
         

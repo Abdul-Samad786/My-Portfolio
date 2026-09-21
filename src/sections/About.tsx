@@ -161,14 +161,14 @@ export default function About() {
               
               <div className="space-y-4 text-base leading-relaxed">
                 <p className="text-[#E2E8F0]">
-                  I'm AI/ML Engineer and Full Stack Developer based in Bahawalpur, Pakistan. I build ML systems that make it from notebook to production — from NLP-driven regression models with SHAP interpretability, to LLM fine-tuning with LoRA, to a multilingual voice cloning system using YourTTS.
-                </p>
+                  I'm an AI/ML Engineer and Full Stack Developer focused on building intelligent software from idea to production.                </p>
                 
                 <p className="text-[#E2E8F0]">
-                  On the engineering side, I work across the stack — building scalable Flask/Django backends with MongoDB, RESTful APIs that connect AI/ML components to real products, and React-based frontends to bring it all together in a working, user-facing application.
+                  My work spans machine learning, LLM applications, RAG, and agentic AI, alongside backend and frontend engineering. I build the systems around AI — from data and model pipelines to APIs, application logic, and user-facing products.
                 </p>
                 <p className="text-[#E2E8F0]">
-                  I'm looking for opportunities at the intersection of applied ML and full-stack engineering — building things that actually work in production, not just in a demo.                </p>
+                  I enjoy turning AI capabilities into reliable software that solves real problems, rather than keeping them confined to notebooks and experiments.
+                </p>
               </div>
             </motion.div>
 

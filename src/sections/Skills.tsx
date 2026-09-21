@@ -2,6 +2,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'framer-motion';
 import { useRef, useState } from 'react';
 
+interface TechIcon {
+  name: string;
+  src: string;
+  /** Optional chip background for monochrome logos that need contrast against the dark theme. */
+  bg?: string;
+}
+
 const techCategories = {
   frontend: {
     title: 'Frontend',
@@ -14,7 +21,7 @@ const techCategories = {
       { name: 'Redux Toolkit', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg' },
       { name: 'HTML5', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg' },
       { name: 'CSS3', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg' },
-    ],
+    ] as TechIcon[],
   },
   backend: {
     title: 'Backend & APIs',
@@ -24,11 +31,11 @@ const techCategories = {
       { name: 'Flask', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flask/flask-original.svg' },
       { name: 'Django', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg' },
       { name: 'FastAPI', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg' },
-    ],
+    ] as TechIcon[],
   },
   mlAi: {
     title: 'Machine Learning & AI',
-    description: 'End-to-end ML pipelines, NLP embeddings, model fine-tuning, and interpretable AI.',
+    description: 'End-to-end ML pipelines, NLP embeddings, model fine-tuning, interpretable AI, and LLM-powered systems — RAG pipelines and autonomous agents.',
     icons: [
       { name: 'Python', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg' },
       { name: 'PyTorch', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pytorch/pytorch-original.svg' },
@@ -36,7 +43,10 @@ const techCategories = {
       { name: 'scikit-learn', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/scikitlearn/scikitlearn-original.svg' },
       { name: 'Pandas', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
       { name: 'NumPy', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
-    ],
+      { name: 'OpenAI', src: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/openai.svg', bg: '#ffffff' },
+      { name: 'Hugging Face', src: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/huggingface.svg', bg: '#ffffff' },
+      { name: 'LangChain', src: 'https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/langchain.svg', bg: '#ffffff' },
+    ] as TechIcon[],
   },
   database: {
     title: 'Databases',
@@ -46,7 +56,7 @@ const techCategories = {
       { name: 'PostgreSQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg' },
       { name: 'MySQL', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg' },
       { name: 'Redis', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redis/redis-original.svg' },
-    ],
+    ] as TechIcon[],
   },
   cloud: {
     title: 'Cloud & DevOps',
@@ -58,7 +68,7 @@ const techCategories = {
       { name: 'Nginx', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg' },
       { name: 'GitHub Actions', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
       { name: 'GitLab CI/CD', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg' },
-    ],
+    ] as TechIcon[],
   },
 };
 
@@ -218,7 +228,7 @@ export default function Skills() {
                   <motion.div
                     className="w-12 h-12 sm:w-14 sm:h-14 flex items-center justify-center rounded-xl"
                     style={{
-                      background: 'var(--bg-elevated)',
+                      background: tech.bg ?? 'var(--bg-elevated)',
                       border: '1px solid var(--border-subtle)',
                     }}
                     whileHover={{

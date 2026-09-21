@@ -1,3 +1,5 @@
+import { normalizeMarkdownContent } from '../utils/markdown';
+
 const API_URL = import.meta.env.VITE_API_URL;
 
 export interface Article {
@@ -13,6 +15,14 @@ export interface Article {
   created_at: string;
   updated_at: string;
   published_at: string;
+}
+
+function normalizeArticle(article: Article): Article {
+  return {
+    ...article,
+    content: normalizeMarkdownContent(article.content),
+    excerpt: article.excerpt ?? '',
+  };
 }
 
 interface ApiResponse<T> {
@@ -40,10 +50,10 @@ export async function getArticles(): Promise<Article[] | null> {
 
     // API returns paginated { blogs: [...] }; keep a fallback if data is already an array
     if (Array.isArray(data)) {
-      return data;
+      return data.map(normalizeArticle);
     }
     if (data && Array.isArray(data.blogs)) {
-      return data.blogs;
+      return data.blogs.map(normalizeArticle);
     }
     return null;
   } catch (error) {
@@ -59,7 +69,7 @@ export async function getArticleBySlug(slug: string): Promise<Article | null> {
       return null;
     }
     const body: ApiResponse<Article> = await response.json();
-    return body.data ?? null;
+    return body.data ? normalizeArticle(body.data) : null;
   } catch (error) {
     console.error(`Error fetching article ${slug}:`, error);
     return null;

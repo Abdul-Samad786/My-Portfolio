@@ -2,16 +2,12 @@ import ReactMarkdown, { type Components } from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import rehypeHighlight from 'rehype-highlight';
 import 'highlight.js/styles/atom-one-dark.css';
+import { normalizeMarkdownContent } from '../utils/markdown';
 
 /**
  * Single source of truth for turning article/blog markdown into HTML.
  *
- * Flow: the API returns raw markdown (see src/api/articles.ts) → this
- * component renders it. No markdown string should be transformed,
- * escaped, or reformatted anywhere else in the app — if a piece of
- * markdown doesn't render the way it should, fix it here (via
- * remark/rehype plugins or the `components` overrides below), not by
- * preprocessing the string before it gets here.
+ * Flow: API markdown → normalize legacy escaped newlines → react-markdown.
  */
 
 const markdownComponents: Components = {
@@ -107,6 +103,8 @@ interface MarkdownRendererProps {
 }
 
 export default function MarkdownRenderer({ content, className }: MarkdownRendererProps) {
+  const markdown = normalizeMarkdownContent(content);
+
   return (
     <div className={className ?? 'prose prose-slate prose-lg max-w-none'}>
       <ReactMarkdown
@@ -114,7 +112,7 @@ export default function MarkdownRenderer({ content, className }: MarkdownRendere
         rehypePlugins={[rehypeHighlight]}
         components={markdownComponents}
       >
-        {content}
+        {markdown}
       </ReactMarkdown>
     </div>
   );

@@ -1,4 +1,5 @@
 import { getAdminToken, clearAdminToken } from './adminAuth';
+import { normalizeMarkdownContent } from '../utils/markdown';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -74,12 +75,26 @@ async function adminRequest<T>(path: string, options: RequestInit = {}): Promise
   return body.data;
 }
 
-export function fetchAdminBlogs(page = 1, limit = 10): Promise<AdminBlogListData> {
-  return adminRequest(`/api/admin/blogs?page=${page}&limit=${limit}`);
+function normalizeAdminBlog(blog: AdminBlog): AdminBlog {
+  return {
+    ...blog,
+    content: normalizeMarkdownContent(blog.content),
+  };
 }
 
-export function fetchAdminBlog(id: string): Promise<AdminBlog> {
-  return adminRequest(`/api/admin/blogs/${id}`);
+export async function fetchAdminBlogs(page = 1, limit = 10): Promise<AdminBlogListData> {
+  const data = await adminRequest<AdminBlogListData>(
+    `/api/admin/blogs?page=${page}&limit=${limit}`
+  );
+  return {
+    ...data,
+    blogs: data.blogs.map(normalizeAdminBlog),
+  };
+}
+
+export async function fetchAdminBlog(id: string): Promise<AdminBlog> {
+  const blog = await adminRequest<AdminBlog>(`/api/admin/blogs/${id}`);
+  return normalizeAdminBlog(blog);
 }
 
 export function createAdminBlog(input: BlogInput): Promise<AdminBlog> {

@@ -190,8 +190,8 @@ export default function Hero() {
                 aria-label="Career highlights"
               >
                 {[
-                  { value: '2+', label: 'Years' },
-                  { value: 'ML + Backend', label: 'Focus' },
+                  { value: '3+', label: 'Years' },
+                  { value: 'AI + Full Stack Engineering', label: 'Focus' },
                 ].map(({ value, label }) => (
                   <div key={label} className="stat-pill">
                     <span style={{ color: 'var(--accent-primary)', fontWeight: 600 }}>{value}</span>

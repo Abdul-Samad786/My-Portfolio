@@ -33,11 +33,11 @@ const experiences: Experience[] = [
     logoColor: '#10B981',
     isCurrent: true,
     achievements: [
-      'Building and shipping personal projects spanning <strong>machine learning</strong> and <strong>backend development</strong>',
-      'Deepening skills in NLP, model fine-tuning, and scalable Python web services through hands-on builds',
-      'Exploring end-to-end product ideas — from data pipelines and APIs to deployment and documentation',
+      'Building and shipping AI-powered applications, including an eBay marketplace platform that integrates official APIs for product research, listing workflows, and AI-driven margin and market analysis',
+'Developing a real-time professional networking platform with Flask, MongoDB, WebSockets, messaging, notifications, and AI-powered matching capabilities',
+'Building practical LLM, RAG, and agentic AI systems that connect language models with tools, data, APIs, and workflows to solve real-world problems'
     ],
-    technologies: ['Python', 'Django', 'Flask', 'MongoDB', 'PyTorch', 'scikit-learn'],
+    technologies: ['Python', 'Django', 'Flask', 'MongoDB', 'Langchain', 'OpenAI API', 'WebSockets', 'REST APIs'],
   },
   {
     company: 'Holistic TLC',
@@ -60,9 +60,11 @@ const experiences: Experience[] = [
     location: 'Bahawalpur, Pakistan',
     logoColor: '#818cf8',
     achievements: [
-      'Built an end-to-end ML solution for housing price prediction, integrating <strong>NLP embeddings</strong> and regression models (Linear Regression, Random Forest, DNN) with <strong>SHAP</strong> for interpretability, optimizing property listing success predictions',
-      'Developed an advanced unit conversion system using <strong>SmolLM2</strong>, implementing in-context learning, <strong>LoRA</strong> fine-tuning, and RFT to enhance reasoning, achieving high accuracy in generating precise conversion answers across diverse units',
-      'Designed a generalized text-to-speech voice cloning system using the <strong>YourTTS</strong> model, enabling multilingual speech synthesis from user-provided text and WAV files, optimized for Google Colab with GPU acceleration',
+      'Developed <strong>voice cloning agents</strong> integrating AI agents with voice synthesis models to automate voice-based generation and interaction workflows',
+      'Engineered an <strong>Australia-based real-estate prediction system</strong> that combines business-question analysis, property data processing, and machine learning to predict house prices and support data-driven real-estate decisions',
+      'Developed an <strong>AI-powered autograder</strong> that evaluates programming assignments against defined requirements, automating submission analysis and grading workflows',
+      'Performed <strong>time-series analysis and forecasting</strong>, developing predictive models to identify temporal patterns and generate forecasts from historical data',
+      'Worked on a <strong>Java language research project</strong> involving dataset analysis, machine learning model development, prediction, and validation to evaluate model performance'
     ],
     technologies: ['Python', 'PyTorch', 'TensorFlow', 'scikit-learn', 'NLP', 'SHAP', 'LoRA', 'YourTTS'],
   },
@@ -127,9 +129,9 @@ export default function Experience() {
           aria-label="Career statistics"
         >
           {[
-            { value: '2+', label: 'Years Experience' },
+            { value: '3+', label: 'Years Experience' },
             { value: '2', label: 'Companies' },
-            { value: 'ML + Backend', label: 'Focus' },
+            { value: 'AI + Full Stack Engineering', label: 'Focus' },
           ].map(({ value, label }) => (
             <div
               key={label}
