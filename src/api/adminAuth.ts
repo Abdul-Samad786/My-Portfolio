@@ -1,4 +1,5 @@
-const API_URL = import.meta.env.VITE_API_URL;
+// Empty string = same-origin /api (Vercel proxies to the backend in production).
+const API_URL = import.meta.env.VITE_API_URL ?? '';
 const TOKEN_KEY = 'admin_token';
 
 interface ApiResponse<T> {
