@@ -36,8 +36,8 @@ export default function Hero() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const scrollToExperience = () => {
-    document.querySelector('#experience')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const scrollToProjects = () => {
+    document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   return (
@@ -160,7 +160,7 @@ export default function Hero() {
                 <span className="opacity-50">&gt;</span>
                 <Typewriter
                   options={{
-                    strings: ['Full Stack Developer', 'Machine Learning Engineer', 'AI Engineer'],
+                    strings: ['AI Engineer','Full Stack Developer'],
                     autoStart: true,
                     loop: true,
                     delay: 65,
@@ -180,7 +180,7 @@ export default function Hero() {
                   fontFamily: 'DM Sans, sans-serif',
                 }}
               >
-                I build AI/ML systems and backend architecture that turn complex problems into practical, production-ready software.
+                I build AI/ML systems and full-stack applications that turn complex problems into practical, production-ready software.
               </motion.p>
 
               {/* Stat Pills */}
@@ -227,15 +227,15 @@ export default function Hero() {
                 <motion.button
                   onClick={() => {
                     trackButtonClick('View My Work', 'Hero');
-                    scrollToExperience();
+                    scrollToProjects();
                   }}
                   className="btn-secondary"
                   whileHover={{ translateY: -2 }}
                   whileTap={{ scale: 0.97 }}
                   transition={{ duration: 0.2 }}
-                  aria-label="View my experience"
+                  aria-label="View My Work"
                 >
-                  View Experience
+                  View My Work
                   <ArrowRight size={16} aria-hidden="true" />
                 </motion.button>
               </motion.div>

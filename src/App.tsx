@@ -11,7 +11,6 @@ import Hero from './sections/Hero';
 import About from './sections/About';
 import Skills from './sections/Skills';
 import Experience from './sections/Experience';
-// import Projects from './sections/Projects'; // add when personal projects are ready
 // import Clients from './sections/Clients';
 import Education from './sections/Education';
 import Blog from './sections/Blog';
@@ -22,6 +21,7 @@ import AdminLayout from './pages/admin/AdminLayout';
 import ProtectedRoute from './pages/admin/ProtectedRoute';
 import BlogList from './pages/admin/BlogList';
 import BlogForm from './pages/admin/BlogForm';
+import Projects from './sections/Projects';
 
 function SectionDivider() {
   return (
@@ -67,6 +67,9 @@ function Portfolio() {
             <SectionDivider />
             <div className="section-ambient"><Experience /></div>
             <SectionDivider />
+            <div className="section-ambient"><Projects /></div>
+            <SectionDivider />
+
             <div className="section-ambient"><Education /></div>
             <SectionDivider />
             <div className="section-ambient"><Blog /></div>
